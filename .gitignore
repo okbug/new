@@ -1,3 +1,4 @@
+packages/**/pnpm-lock.yaml
 packages/**/yarn.lock
 packages/**/package-lock.json
 packages/**/node_modules
