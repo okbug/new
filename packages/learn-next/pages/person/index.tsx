@@ -1,6 +1,7 @@
+import type { NextPage } from 'next'
 import Link from "next/link"
 
-const Person = () => {
+const Person: NextPage = () => {
     return <div>
         <h1>Person</h1>
         <div>
