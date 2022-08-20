@@ -15,6 +15,7 @@ dirs=$(ls)
 for dir in $dirs
 do
   cd $dir
+  rm -rf ./node_modules
   yarn
   cd ..
 done
