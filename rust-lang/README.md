@@ -1,5 +1,9 @@
 # 学习
 
+> 官方文档
+> https://github.com/rust-lang/rust-by-example
+
+
 ## 执行单个文件
 
 创建一个 main.rs 文件
@@ -49,3 +53,33 @@ check命令比build要快
 ## 第一个练习
 
 hooks test
+
+## Rust中的数据结构
+
+
+### 结构体
+使用struct关键字创建三种类型的结构
+- 元组
+- 类似C的结构体
+- 无字段的单元结构
+
+```Rust
+struct Pair(i32, i32);
+
+struct Person {
+    name: String,
+    age: i32,
+}
+
+struct Unit; // 可以在泛型中使用
+
+fn main() {
+    let pair = Pair(1, 2);
+    let zhang_san = Person {
+        name: String::from('zhang san'),
+        age: 18,
+    };
+    let unit = Unit;
+    println!("{} = {}", pair.0, zhang_san.name);
+  }
+```
