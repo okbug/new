@@ -47,3 +47,5 @@ check命令比build要快
 只是检查能不能编译
 
 ## 第一个练习
+
+hooks test
