@@ -5,7 +5,16 @@ class A {
     constructor(name) {
         this.name = name;
     }
+    /**
+     * getName
+     * @returns string
+     */
     getName() {
         return this.name;
+    }
+
+    // @need-try 设置名字失败
+    setName(name) {
+        this.name = name;
     }
 }

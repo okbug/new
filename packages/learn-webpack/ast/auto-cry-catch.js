@@ -19,7 +19,8 @@ function parseCodeStringToStatement(str) {
 const error = 'error'
 
 let customeCode = `
-console.log(${error});
+ctx.sendError('something', false)
+handleControllerCatchError(ctx, ${error}, 'something')
 `
 
 let parseResult = parseCodeStringToStatement(customeCode);
@@ -31,14 +32,10 @@ let plugin = {
       let blockStatement = node.body;
       if (blockStatement.body && types.isTryStatement(blockStatement.body[0])) return;
 
-      // let catchStatement = template.statement(`
-      //     console.log(error, 1);
-      // `)();
-
-      //  // [catchStatement, template.statement('console.log(\'hello world\')')()]
       let catchClause = types.catchClause(types.identifier(error), types.blockStatement(parseResult));
 
       let tryStatement = types.tryStatement(blockStatement, catchClause);
+      console.log(nodePath.leadingComments, 'comments')
       let func = types.functionExpression(id, node.params, types.blockStatement([tryStatement]), node.generator, node.async);
       nodePath.replaceWith(func)
     }
@@ -62,11 +59,6 @@ function parse(code, errorName, errorBody) {
         let blockStatement = node.body;
         if (blockStatement.body && types.isTryStatement(blockStatement.body[0])) return;
 
-        // let catchStatement = template.statement(`
-        //     console.log(error, 1);
-        // `)();
-
-        //  // [catchStatement, template.statement('console.log(\'hello world\')')()]
         let catchClause = types.catchClause(types.identifier(errorName), types.blockStatement(parseResult));
 
         let tryStatement = types.tryStatement(blockStatement, catchClause);
