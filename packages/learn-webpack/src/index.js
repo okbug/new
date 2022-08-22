@@ -4,6 +4,7 @@ const fn = () => a;
 class A {
     constructor(name) {
         this.name = name;
+        console.log(1);
     }
     /**
      * getName

@@ -3,6 +3,7 @@ const core = require('@babel/core');
 const types = require('babel-types')
 const template = require('@babel/template')
 let code = `
+import handleControllerCatchError from './1.js'
 function a(x, y) {
     console.log(x, y);
     return x + y
@@ -19,10 +20,46 @@ ctx.sendError('something', false)
 handleControllerCatchError(ctx, ${error}, 'something')
 `
 
+function parseCodeStringToStatement(code) {
+  let state = code
+    .split("\n")
+    .filter((i) => i !== "")
+    .map((s) => template.statement(s)());
+  return state;
+}
 let parseResult = parseCodeStringToStatement(customeCode);
+
+const functionName = 'handleControllerCatchError'
+console.log(parseResult, 'parseResult');
+parseResult.forEach(path => {
+  if (path.type === 'ExpressionStatement') {
+    if (path.expression.callee.name === functionName) {
+      console.log(1)
+    }
+  }
+})
 
 let plugin = {
   visitor: {
+    VariableDeclaration(path) {
+      if (path.node.declarations.id.type === 'ObjectPattern') {
+        path.node.declarations.id.properties.forEach(p => {
+          if (p.key.name === FunctionName) {
+            console.log(`导入了 ${functionName}`)
+          }
+        })
+      }
+      if (path.node.declarations.id.name === functionName) {
+        console.log(`导入了 ${functionName}`)
+      }
+    },
+    ImportDeclaration(path) {
+      path.node.specifiers.forEach(item => {
+        if (item.local.name === functionName) {
+          console.log(`导入了 ${functionName}`)
+        }
+      })
+    },
     FunctionDeclaration(nodePath) {
       let { node } = nodePath;
       let { id } = node.id;

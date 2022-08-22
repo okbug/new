@@ -21,6 +21,8 @@ module.exports = {
                     //         "@babel/preset-env"
                     //     ]
                     // }
+                }, {
+                    loader: resolve("my-loaders", "pitch-test"),
                 }],
             }
         ]

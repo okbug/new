@@ -12,8 +12,12 @@
 const classToFunction = require('../ast/class2function');
 
 function loader(source) {
+    console.log('loader1')
     const { code } = classToFunction(source)
     return code;
+}
+loader.pitch = () => {
+    console.log('pitch1');
 }
 
 module.exports = loader;
