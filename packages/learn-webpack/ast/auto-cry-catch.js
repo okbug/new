@@ -9,11 +9,7 @@ function a(x, y) {
 }
 `
 
-function parseCodeStringToStatement(str) {
-  let arr = str.split('\n').filter(i => i !== '');
-  // console.log(arr)
-  return arr.map(s => template.statement(s)())
-}
+
 
 
 const error = 'error'
@@ -24,6 +20,7 @@ handleControllerCatchError(ctx, ${error}, 'something')
 `
 
 let parseResult = parseCodeStringToStatement(customeCode);
+
 let plugin = {
   visitor: {
     FunctionDeclaration(nodePath) {
@@ -35,7 +32,6 @@ let plugin = {
       let catchClause = types.catchClause(types.identifier(error), types.blockStatement(parseResult));
 
       let tryStatement = types.tryStatement(blockStatement, catchClause);
-      console.log(nodePath.leadingComments, 'comments')
       let func = types.functionExpression(id, node.params, types.blockStatement([tryStatement]), node.generator, node.async);
       nodePath.replaceWith(func)
     }
