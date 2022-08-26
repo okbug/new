@@ -60,19 +60,19 @@ const transformClasses = {
             )
           );
         }
-      //   if (classMethod.leadingComments) {
-      //     classMethod.leadingComments.forEach((comment) => {
-      //       if (comment.value.trim().startsWith("@need-try")) {
-      //         const _comment = comment.value.trim();
-      //         const tryEventName = _comment.split(" ")[1] || "test";
-      //         let catchMessage = getCatchStatement(tryEventName);
-      //         let catchClause = types.catchClause(types.identifier(error), types.blockStatement(catchMessage));
-      //         const body = p.right.body;
-      //         if (types.isTryStatement(p.right.body.body)) return
-      //         p.right.body.body = types.tryStatement(body, catchClause)
-      //       }
-      //     });
-      //   }
+        // if (classMethod.leadingComments) {
+        //   classMethod.leadingComments.forEach((comment) => {
+        //     if (comment.value.trim().startsWith("@need-try")) {
+        //       const _comment = comment.value.trim();
+        //       const tryEventName = _comment.split(" ")[1] || "test";
+        //       let catchMessage = getCatchStatement(tryEventName);
+        //       let catchClause = types.catchClause(types.identifier(error), types.blockStatement(catchMessage));
+        //       const body = p.right.body;
+        //       if (types.isTryStatement(p.right.body.body)) return
+        //       p.right.body.body = types.tryStatement(body, catchClause)
+        //     }
+        //   });
+        // }
         newNodes.push(p);
       });
       if (newNodes.length === 1) {
