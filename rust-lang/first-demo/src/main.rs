@@ -93,6 +93,7 @@ fn use_struct() {
        age: 18,
    };
    let pair = Pair(100, 200);
+   println!("{}", zhang_san.age);
 
    println!("name is {}, pair.0 is {}", zhang_san.name, pair.0);
 }
@@ -121,5 +122,7 @@ fn main() {
     // 结构体
     // use_struct();
     // 迭代器
-    use_iterate();
+    // use_iterate();
+    let x = 5;
+    let y = &x;
 }

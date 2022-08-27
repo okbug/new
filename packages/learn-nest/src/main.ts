@@ -14,6 +14,18 @@ async function bootstrap(): Promise<IConfig> {
     port,
   };
 }
+function sleep() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(1), 200);
+  });
+}
+async function start() {
+  for (let i = 0; i < 10; i++) {
+    await sleep();
+  }
+}
+
+start();
 
 bootstrap().then(({ port }) => {
   console.log('server running at http://localhost:' + port + ' ');

@@ -30,10 +30,17 @@ rustc main.rs
 
 `cargo new first-demo`
 
+
 就会创建一个文件夹名为 first-demo 
 并且生成了src文件夹和一个叫做Cargo.toml 的文件
 这个文件类似package.json
+如果是已经创建好的项目 就是 `cargo init`
 
+```shell
+npm init -y
+cargo init
+go mod init ${anything}
+```
 ## 项目的编译
 在 `first-demo` 文件夹下运行 `cargo build`
 
