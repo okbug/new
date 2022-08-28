@@ -9,8 +9,15 @@
 
 
 2022.08.21
-添加了git hooks 以及master分支的安全策略
+<del>添加了git hooks 以及master分支的安全策略</del>
 
 ----
 2022.08.22
 webpack
+
+----
+2022.08.28
+Rust的字符、数组、模块化
+
+下周计划接着学Rust and Go
+
