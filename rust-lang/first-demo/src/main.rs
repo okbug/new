@@ -123,6 +123,4 @@ fn main() {
     // use_struct();
     // 迭代器
     // use_iterate();
-    let x = 5;
-    let y = &x;
 }
