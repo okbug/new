@@ -4,7 +4,7 @@ mod request;
 mod first {
     const PRIVATE_MESSAGE: &str = "PRIVATE_MESSAGE";
     pub const PUBLIC_MESSAGE: &str = "Hello Wprld";
-    pub const a_message: &str = "hhh";
+    pub const A_MESSAGE: &str = "hhh";
 
     pub mod second {
         const SECONE_MESSAGE: &str = "SECOND";
