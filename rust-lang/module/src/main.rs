@@ -1,5 +1,6 @@
 mod router;
 mod request;
+use cxwht::cxwht as okbug;
 
 mod first {
     const PRIVATE_MESSAGE: &str = "PRIVATE_MESSAGE";
@@ -17,7 +18,7 @@ mod first {
     pub mod third {
         pub const THIRD_MESSAGE: &str = "THIRD_MESSAGE";
         pub fn get_message() {
-            println!("{}", super::a_message);
+            println!("{}", super::A_MESSAGE);
         }
     }
     pub fn get_secone_message() {
@@ -32,5 +33,6 @@ fn main() {
     first::get_secone_message();
     router::router();
     request::core::axios();
+    okbug::get_url();
 }
 
