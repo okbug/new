@@ -25,9 +25,7 @@ pub mod cxwht {
 /// assert_eq!(3, res);
 /// ```
 pub fn curry_add(x: i32) {
-    |y: i32| -> i32 {
-        x + y
-    }
+    x
 }
 
 /// A Fucntion To Add Two i32 type values
