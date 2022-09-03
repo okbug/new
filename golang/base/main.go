@@ -4,10 +4,10 @@ import (
   "fmt"
 )
 
+func swap(x string, y string) (string, string) {
+  return y, x
+}
 func main() {
-  var a = 1
-  fmt.Println(a)
-  var hash_map = make(map[string]string)
-  hash_map["1"] = "222"
-
+  a, b := swap("1", "2")
+  fmt.Println(a, b)
 }
