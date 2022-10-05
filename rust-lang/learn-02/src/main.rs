@@ -1,11 +1,15 @@
-fn main () {
-    let mut s = String::from("hello");
+async fn say_world() {
+    println!("world");
+}
 
-    let r1 = &s; // 没问题
-    let r2 = &s; // 没问题
-    println!("{} and {}", r1, r2);
-    println!("{} and {}", r1, r2);
-    println!("{} and {}", r1, r2);
-    let r3 = &mut s;
+#[tokio::main]
+async fn main() {
+    // Calling `say_world()` does not execute the body of `say_world()`.
+    let op = say_world();
 
+    // This println! comes first
+    println!("hello");
+
+    // Calling `.await` on `op` starts executing `say_world`.
+    op.await;
 }
