@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["MESSAGE",""],["URL",""]],"fn":[["get_url",""]]});
