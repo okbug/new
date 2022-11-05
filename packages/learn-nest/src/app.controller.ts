@@ -26,7 +26,7 @@ export class AppController {
 
   //  @Header('content-type', 'text/html; charset=utf-8')
   @Get('/test/:id')
-  getTest(@Req() req: Request, @Param('id') id): string {
+  getTest(@Req() req: Request, @Param('id') id: string): string {
     const params = getUrlParams(req.url);
     console.log(params);
     if (!isEmptyObject(params)) {
