@@ -83,10 +83,16 @@ struct Unit; // 可以在泛型中使用
 fn main() {
     let pair = Pair(1, 2);
     let zhang_san = Person {
-        name: String::from('zhang san'),
+        name: String::from("zhang san"),
         age: 18,
     };
     let unit = Unit;
     println!("{} = {}", pair.0, zhang_san.name);
   }
+```
+
+
+```shell
+# 热更新
+cargo watch -x run
 ```
