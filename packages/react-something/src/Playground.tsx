@@ -8,10 +8,9 @@ const Playground = () => {
   return (
     <div>
       <Form
-        initialValues={{ username: '', password: '' }}
-        onFinish={values => {
-          console.log('完成:', values);
-          console.log(form.getFieldsValue());
+        initialValues={{ username: '11', password: '22' }}
+        onFinish={val => {
+          console.log(val);
         }}
         form={form}
       >

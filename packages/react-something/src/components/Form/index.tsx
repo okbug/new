@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import FormItem from './FormItem';
 import Field from './Field';
-import { useForm } from './useForm';
+import { Store, useForm } from './useForm';
 import FieldContext from './FieldContext';
 import { FormType } from './useForm';
+const noop = () => {
+  /** */
+};
 const Form = (
   props: React.PropsWithChildren<{
-    onFinish?: (val: string) => void;
-    initialValues?: Record<string, string>;
+    onFinish?: (store: Store) => void;
+    initialValues?: Store;
     form: FormType;
+    onFinishFailed?: () => void;
   }>,
 ) => {
-  const { onFinish, initialValues, children, form } = props;
+  const {
+    onFinish = noop,
+    initialValues = {},
+    children,
+    form,
+    onFinishFailed = noop,
+  } = props;
 
+  useEffect(() => {
+    form.setFieldsValue(initialValues);
+  }, []);
+
+  useEffect(() => {
+    form.setCallbacks({
+      onFinish,
+      onFinishFailed,
+    });
+  }, [onFinish, onFinishFailed]);
   return (
     <form
       onSubmitCapture={e => {
         e.preventDefault();
-        onFinish?.('111');
+        form.submit();
       }}
     >
       <FieldContext.Provider value={form}>{children}</FieldContext.Provider>
